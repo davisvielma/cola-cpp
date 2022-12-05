@@ -40,6 +40,8 @@ int main(int argc, char const *argv[]) {
 		cout << "Su tamaño es: " << cola->verTamano() << endl;
 	}
 
+	cola->imprimirElementos();
+
 	cola->eliminarElemento();
 	cola->eliminarElemento();
 	cout << "La cola tiene el valor: " << cola->verInicio() << endl;

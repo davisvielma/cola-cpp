@@ -1,4 +1,5 @@
 #include "Cola.h"
+#include <iostream>
 
 Cola::Cola() {
 	this->inicio = new Nodo();
@@ -37,4 +38,28 @@ void Cola::eliminarElemento() {
 		aux->anterior = this->inicio;
 		this->cambiarTamano(-1);
 	}
+}
+
+void Cola::imprimirElementos() const {
+	if(!this->vacio()) {
+		Nodo *aux = this->inicio->siguiente;
+
+		std::cout << "| ";
+
+		while(aux != this->fin) {
+			std::cout << aux->dato << " | ";
+			aux = aux->siguiente;
+		}
+
+		std::cout << std::endl;
+	}
+}
+
+Cola::~Cola() {
+	while(!this->vacio()) {
+		this->eliminarElemento();
+	}
+
+	delete this->inicio;
+	delete this->fin;
 }

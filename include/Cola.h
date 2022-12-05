@@ -21,7 +21,7 @@ class Cola {
 		bool vacio() const;
 		void insertarElemento(int);
 		void eliminarElemento();
-		
+		void imprimirElementos() const;
 };
 
 #endif //COLA_H
