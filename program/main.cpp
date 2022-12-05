@@ -19,7 +19,31 @@ int main(int argc, char const *argv[]) {
 		cout << "La cola esta vacia" << endl;
 	} else {
 		cout << "La cola tiene el valor: " << cola->verInicio() << endl;
+		cout << "Su tamaño es: " << cola->verTamano() << endl;
 	}
+
+	cola->insertarElemento(7);
+
+	if(cola->vacio()) {
+		cout << "La cola esta vacia" << endl;
+	} else {
+		cout << "La cola tiene el valor: " << cola->verInicio() << endl;
+		cout << "Su tamaño es: " << cola->verTamano() << endl;
+	}
+
+	cola->insertarElemento(81);
+
+	if(cola->vacio()) {
+		cout << "La cola esta vacia" << endl;
+	} else {
+		cout << "La cola tiene el valor: " << cola->verInicio() << endl;
+		cout << "Su tamaño es: " << cola->verTamano() << endl;
+	}
+
+	cola->eliminarElemento();
+	cola->eliminarElemento();
+	cout << "La cola tiene el valor: " << cola->verInicio() << endl;
+	cout << "Su tamaño es: " << cola->verTamano() << endl;
 	
 	return 0;
 }
