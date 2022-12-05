@@ -3,10 +3,11 @@
 
 class Nodo {
     private:
+    	Nodo *anterior;
         Nodo *siguiente;
         int dato;
 
-    friend class Pila;
+    friend class Cola;
 };
 
 #endif //NODO_H
