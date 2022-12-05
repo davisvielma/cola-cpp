@@ -1,51 +1,50 @@
 #include <iostream>
 #include "Cola.h"
+#include "Controlador.h"
 
 using namespace std;
+
+#define ROJO "\x1B[31m"
 
 int main(int argc, char const *argv[]) {
 
 	Cola *cola = new Cola();
+	Controlador controlador;
+	int opcion = 0;
 
-	if(cola->vacio()) {
-		cout << "La cola esta vacia" << endl;
-	} else {
-		cout << "La cola tiene valores" << endl;
-	}
+	do {
 
-	cola->insertarElemento(45);
+		try {
+			controlador.menu();
+			cin >> opcion;
 
-	if(cola->vacio()) {
-		cout << "La cola esta vacia" << endl;
-	} else {
-		cout << "La cola tiene el valor: " << cola->verInicio() << endl;
-		cout << "Su tamaño es: " << cola->verTamano() << endl;
-	}
+			if(opcion < 1 || opcion > 6) throw -1;
 
-	cola->insertarElemento(7);
+			switch(opcion) {
+				case 1:
+					controlador.agregarDato(cola, controlador.pedirDato());
+                    break;
+                case 2:
+                	controlador.eliminarDato(cola);
+                	break;
+                case 3:
+                	controlador.verPrimerDato(cola);
+                	break;
+                case 4:
+                	controlador.imprimirDatos(cola);
+                	break;
+                case 5:
+                	controlador.verTamano(cola);
+                	break;
+			}
 
-	if(cola->vacio()) {
-		cout << "La cola esta vacia" << endl;
-	} else {
-		cout << "La cola tiene el valor: " << cola->verInicio() << endl;
-		cout << "Su tamaño es: " << cola->verTamano() << endl;
-	}
+		} catch(int e) {
+            cout << ROJO "\nERROR!! Opción invalida." << endl;
+		}
 
-	cola->insertarElemento(81);
+	} while(opcion != 6);
 
-	if(cola->vacio()) {
-		cout << "La cola esta vacia" << endl;
-	} else {
-		cout << "La cola tiene el valor: " << cola->verInicio() << endl;
-		cout << "Su tamaño es: " << cola->verTamano() << endl;
-	}
-
-	cola->imprimirElementos();
-
-	cola->eliminarElemento();
-	cola->eliminarElemento();
-	cout << "La cola tiene el valor: " << cola->verInicio() << endl;
-	cout << "Su tamaño es: " << cola->verTamano() << endl;
+	delete cola;
 	
 	return 0;
 }
